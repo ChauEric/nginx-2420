@@ -77,4 +77,21 @@ Delete the existing content and replace with the following snippet:
 </html>
 ```
 
-Finally, access your web server by entering into the browser, your droplet's IP address.
+To start nginx, we will need to check its status:
+
+```
+sudo systemctl status nginx
+```
+
+It will likely show Loaded: inactive and Active: failed
+If this is the case, run the commands:
+
+```
+sudo systemctl start nginx      - Start a unit immediately.
+sudo systemctl enable nginx     - Enable a unit to start automatically at boot.
+sudo systemctl status nginx     - Status of a unit, including whether it is running or not.
+```
+
+This will enable nginx and start the server.
+
+Finally, to access your web server, enter into the browser, your droplet's IP address.
