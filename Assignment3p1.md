@@ -38,6 +38,7 @@ cd /usr/share/nginx/html
 **cd** is the _change directory_ command and will move you to the folder specified in the path.
 
 Once in this directory, we will edit the existing example index.html file.
+We will use sudo to grant the necessary security privileges to make these changes.
 
 ```
 sudo vim index.html
@@ -76,4 +77,4 @@ Delete the existing content and replace with the following snippet:
 </html>
 ```
 
-If that is not the case, substitute your path instead.
+Finally, access your web server by entering into the browser, your droplet's IP address.
