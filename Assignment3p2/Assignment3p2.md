@@ -119,10 +119,16 @@ First we will need to access it:
 sudo vim /etc/nginx/sites-available/nginx-2420
 ```
 
-We will add the following to the file:
+We will add the following to the existing file obtained from Assignment3p1:
+port 8080, 127.0.0.1:8080
 
 ```
-server_name: http:/127.0.0.1:8080
+server {
+    listen 80;
+    listen [::]:80;
+    server_name _;
+    root: /web/html/nginx-2420;
+    location: index.html index.htm;
 
 location /hey {
     proxy_pass http://127.0.0.1:8080;
@@ -130,6 +136,7 @@ location /hey {
 
 location /echo {
     proxy_pass http://127.0.0.1:8080;
+}
 }
 ```
 
