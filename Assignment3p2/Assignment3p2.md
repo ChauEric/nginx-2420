@@ -100,7 +100,7 @@ To achieve the backend binary, we will go to where sftp will be called, usually 
 </html>
 ```
 
-We will then download it using sftp with the following commands:
+We will then download it to our server using sftp with the following commands:
 
 ```
 sftp -i .ssh/do-key YourName@DropletIP
@@ -108,7 +108,40 @@ put hello-server
 exit
 ```
 
+Once it is on our machine under the location **/home/${user}/hello-server**, we will relocate and rename it.
+
+```
+sudo mv hello-server /usr/local/bin/binary_backend
+```
+
 ### Creating a new service file to run the backend
+
+We will now have to make it executable and a service file to run it:
+
+#### Making it Executable is as easy as:
+
+```
+sudo chmod u+x /usr/local/bin/binary_backend
+```
+
+#### Service File
+
+We will create the service file
+
+```
+[Unit]
+Description=Backend Service for Assignment3p2
+After=network.target
+
+[Service]
+Type=Simple
+#This is where the backend file is located.
+ExecStart=/usr/local/bin/binary_backend
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
 
 ### Editing nginx server block, adding reverse proxy to backend.
 
@@ -139,5 +172,13 @@ location /echo {
 }
 }
 ```
+
+We can test for syntax errors or problems using:
+
+```
+sudo nginx -t
+```
+
+If there are no problems, we can restart nginx to enable the updates.
 
 ## Connection Testing
