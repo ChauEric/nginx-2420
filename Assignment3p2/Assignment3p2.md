@@ -182,3 +182,12 @@ sudo nginx -t
 If there are no problems, we can restart nginx to enable the updates.
 
 ## Connection Testing
+
+#### Testing:
+
+```
+curl http://YOUR.IP.HERE
+```
+
+Will result in a similar screen:
+(Screenshot 2024-04-10 110402.png)
